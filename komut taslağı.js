@@ -17,3 +17,7 @@ exports.help = {
   description: 'Botun pingini gösterir', //açıklaması
   usage: 'ping' //komutun kullanım şekli (mesela hava <bölge>)
 };
+
+//komut taslağımız basit anlatımını zaten dosyalarda bulursunuz
+//bu ise bizim komut taslağımız
+//bunun üzerinden gideceğiz
