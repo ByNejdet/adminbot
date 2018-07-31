@@ -1,11 +1,11 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const ayarlar = require('./ayarlar.json')
+const ayarlar = require('./ayarlar.json');
 
 var prefix = ayarlar.prefix;
 
 client.on('ready', () => {
-  console.log(`ADMİN BOT HAZIR KİM BANLANICAK ${client.user.tag}!`);
+  console.log(`BOT: ${client.user.username} adı ile giriş yaptı!`);
 });
 
 client.on('message', msg => {
@@ -15,25 +15,31 @@ client.on('message', msg => {
 
   if (!msg.content.startsWith(prefix)) {
 	  return;
-}
-  if (msg.content === prefix + 'ping') {
-    msg.channel.sendMessage('pingim! **' + client.ping + '** ms' );
+  }
+  if (msg.content.toLowerCase() === prefix + 'ping') {
+    msg.reply('Pong! **' + client.ping + '** ms');
+  }
+  if (msg.content.toLowerCase() === prefix + 'sa') {
+    msg.reply('Aleyküm selam!');
+  }
+  if (msg.content.toLowerCase() === prefix + 'yaz') {
+    msg.delete();
+    msg.channel.sendMessage(msg.content);
   }
   if (msg.content.toLowerCase() === prefix + 'temizle') {
-     msg.delete();
-     msg.channel.bulkDelete(100);
-     msg.channel.sendMessage("100 adet mesaj silindi!");
-   }
-   if (msg.content.toLowerCase() === prefix + 'reboot') {
-   if (msg.author.id !== ayarlar.sahip) {
-     msg.reply('Benim yapımcım değilsin!');
-   } else {
-     msg.reply(`Bot yeniden başlatılıyor...`).then(msg => {
-     console.log(`BOT: Bot yeniden başlatılıyor...`);
-     process.exit(0);
-   })
+    msg.channel.bulkDelete(100);
+    msg.channel.sendMessage("100 adet mesaj silindi!");
   }
- }
+  if (msg.content.toLowerCase() === prefix + 'reboot') {
+    if (msg.author.id !== ayarlar.sahip) {
+      msg.reply('Benim yapımcım değilsin!');
+    } else {
+      msg.channel.sendMessage(`Bot yeniden başlatılıyor...`).then(msg => {
+      console.log(`BOT: Bot yeniden başlatılıyor...`);
+      process.exit(0);
+    })
+   }
+  }
 });
 
 client.login(ayarlar.token);
