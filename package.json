@@ -1,0 +1,15 @@
+{
+  "name": "adminbot",
+  "version": "0.0.1",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "node bot.js"
+  },
+  "author": "ByNejdet",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "util": "^0.11.0"
+  }
+}
