@@ -4,8 +4,8 @@ const Discord = require('discord.js');
 exports.run = function(client, message) {
 
     const embed = new Discord.RichEmbed()
-        .setAuthor(message.author.tag)
-        .setImage(message.author.avatarURL)
+        .setDescription("**SUNUCU ICONU**")
+        .setImage(message.guild.iconURL)
 
     message.channel.send(embed);
 
@@ -14,12 +14,12 @@ exports.run = function(client, message) {
 exports.conf = {
   enabled: true,
   guildOnly: true,
-  aliases: ['avatarım'],
+  aliases: [],
   permLevel: 0
 };
 
 exports.help = {
-  name: 'avatar',
-  description: 'Avatarınızı gösterir',
-  usage: 'avatar'
+  name: 'servericon',
+  description: 'Serverin iconunu gösterir',
+  usage: 'servericon'
 };

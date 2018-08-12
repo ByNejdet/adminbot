@@ -15,17 +15,17 @@ exports.run = function(client, message, args) {
     })
 
     message.channel.send(password);
-};  
+};
 
 exports.conf = {
-  enabled: true, 
-  guildOnly: true, 
+  enabled: true,
+  guildOnly: true,
   aliases: [],
-  permLevel: 0 
+  permLevel: 0
 };
 
 exports.help = {
-  name: 'şifre', 
+  name: 'şifre',
   description: 'Rastgele bir şifre oluşturur.',
   usage: 'şifre <uzunluk>'
 };

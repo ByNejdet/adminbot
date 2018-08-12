@@ -27,6 +27,39 @@ fs.readdir('./komutlar/', (err, files) => {
   });
 });
 
+var antispam = require("anti-spam");
+
+
+antispam(client, {
+  warnBuffer: 1,
+  interval: 1000,
+  warningMessage: "Spam Yapma",
+  roleMessage: "Mutee Atıldı.",
+  roleName: "muted",
+  maxDuplicatesWarning: 1,
+  maxDuplicatesBan: 1,
+  time: 2,
+});
+
+client.on('guildMemberAdd', member => {
+  const channel = memiber.guild.channels.find('name', 'Kullanıcı');
+  if (!channel) return;
+  const embed = new Discord.RichEmbed()
+  .setColor('RANDOM')
+  .setAuthor(member.user.username, member.user.avatarURL)
+  .setThumbnail(member.user.avatarURL)
+  .setTitle('📤 | Sunucuya Katıldı | Hoşgeldin ')
+  .setTimestamp()
+  channel.sendEmbed(embed);
+});
+
+client.on('message', msg => {
+  if (msg.content === 'discord.gg') {
+   msg.delete(30)
+    msg.reply('Reklam Engellendi');
+  }
+});
+
 client.reload = command => {
   return new Promise((resolve, reject) => {
     try {
@@ -77,16 +110,6 @@ client.unload = command => {
     }
   });
 };
-
-client.on('message', msg => {
-  if (msg.content.toLowerCase() === 'sa') {
-		if (!msg.guild.member(msg.author).hasPermission("BAN_MEMBERS")) {
-			msg.author.sendMessage('Aleyküm selam,  hoş geldin ^^'); 
-		} else {
-		msg.reply('Aleyküm selam, hoş geldin ^^');
-		}
-	}
-});
 
 client.elevation = message => {
   if(!message.guild) {

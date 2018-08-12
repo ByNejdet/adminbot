@@ -22,17 +22,17 @@ exports.run = async (client, message) => {
             }
         });
     }, 5 * 1000);
-};  
+};
 
 exports.conf = {
-  enabled: true, 
-  guildOnly: false, 
+  enabled: true,
+  guildOnly: false,
   aliases: [],
-  permLevel: 0 
+  permLevel: 0
 };
 
 exports.help = {
-  name: 'stresçarkı', 
+  name: 'stresçarkı',
   description: 'Sizin için bir stres çarkı çevirir.',
   usage: 'stresçarkı'
 };
